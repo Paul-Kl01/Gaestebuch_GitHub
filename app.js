@@ -1,32 +1,25 @@
 "use strict";
-/*
-// Http Module nutzen
-let http = require("http");
-
-// Anfrage verarbeiten
-let server = http.createServer((request, response) => {
-    let url = request.url;
-    if (url == "/hallo.html") {
-        response.write("hallo");
-        response.end();
-    }
-    console.log("wurde ausgeführt!");
-    response.write("Hallo Welt" + url);
-    response.end();
-});
-
-server.listen(5000);
-*/
-
+// Server nutzen
 let express = require("express");
+// Gästebuch Module holen
+let GuestbookEntry = require("./src/GuestbookEntry");
 
 let app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+// Plugin verwenden/konfigurieren
+app.use(express.static("./public"));
+
+// Gästebucheinträge in Array speichern
+let entries = [
+    new GuestbookEntry("Titel1", "Inhalt 1"),
+    new GuestbookEntry("Titel2", "Inhalt 2"),
+];
+
 app.get("/index", (req, res) => {
     res.render("index", {
-        title: "Titel Variable"
+        entries: entries
     });
     res.end();
 });

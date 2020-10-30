@@ -6,9 +6,15 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
-        <h1>Index geladen - Template engine <%= title %></h1>
+        <% for(let entry of entries) { %>
+            <div>
+                <h3><%= entry.title %></h3>
+                <p><%= entry.content %></p>
+            </div>
+        <% } %>
     </body>
+    <script type="text/javascript" src="/js/index.js"></script>
 </html>
