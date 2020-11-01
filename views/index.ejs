@@ -10,11 +10,20 @@
     </head>
     <body>
         <% for(let entry of entries) { %>
-            <div>
+            <div class="entry">
                 <h3><%= entry.title %></h3>
                 <p><%= entry.content %></p>
             </div>
         <% } %>
+
+        <form method="POST" action="/guestbook/new" class="new-entry">
+            <label for="title">Titel:</label>
+            <input type="text" name="title">
+            <br>
+            <label for="content">Inhalt:</label>
+            <textarea name="content"></textarea>
+            <input type="submit">
+        </form>
     </body>
     <script type="text/javascript" src="/js/index.js"></script>
 </html>

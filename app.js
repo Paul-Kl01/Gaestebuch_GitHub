@@ -24,6 +24,11 @@ app.get("/index", (req, res) => {
     res.end();
 });
 
+app.post("/guestbook/new", (req, res) => {
+    res.write("Erfolgreich");
+    res.end();
+});
+
 app.listen(5000, () => {
-    console.log("App wurde gestartet");
+    console.log("App wurde auf Port 5000 gestartet");
 });
